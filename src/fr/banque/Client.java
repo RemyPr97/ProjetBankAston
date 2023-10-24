@@ -63,11 +63,11 @@ public class Client {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Client [nom=").append(nom)
-                .append(", prenom=").append(prenom)
-                .append(", age=").append(age)
-                .append(", num=").append(num)
-                .append(", comptes=[");
+        sb.append("Client : Nom = ").append(nom)
+                .append(", prenom = ").append(prenom)
+                .append(", age = ").append(age)
+                .append(", num = ").append(num)
+                .append(", comptes =[");
 
         if (comptes != null && comptes.length > 0) {
             for (int i = 0; i < comptes.length; i++) {

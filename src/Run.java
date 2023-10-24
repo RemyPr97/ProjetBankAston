@@ -1,45 +1,33 @@
 import fr.banque.Client;
 import fr.banque.Compte;
+import fr.banque.CompteASeuil;
+import fr.banque.CompteRemunere;
 
 public class Run {
-    public static void main(String[] args) {
-        Client client = new Client();
-        client.setNom("Doe");
-        client.setPrenom("John");
-        client.setAge(42);
-        client.setNum(123456);
-        System.out.println(client);
 
-        Client client2 = new Client("Doe", "Jane", 42, 123456, null);
+    public static void main(String[] args) {
+        Compte c1 = new Compte(1, 1000);
+        Compte c2 = new Compte(2, 2000);
+        Compte c3 = new Compte(3, 3000);
+        Compte[] comptesForClient1 = {c1, c2, c3};
+
+        Client client1 = new Client("Dupont", "Jean", 25, 1, comptesForClient1);
+        System.out.println(client1);
+
+        CompteASeuil c4 = new CompteASeuil(4, 4000, 100);
+        CompteRemunere c5 = new CompteRemunere(5, 5000, 0.1);
+        Compte[] comptesForClient2 = {c4, c5};
+
+        Client client2 = new Client("Durand", "Marie", 30, 2, comptesForClient2);
         System.out.println(client2);
 
-        Client client3 = new Client("Doe", "Jane", 42, 123456, new Compte[0]);
-        System.out.println(client3);
+        client2.ajouterCompte(new Compte(6, 6000));
+        System.out.println(client2);
 
-        Compte[] comptes = new Compte[2];
-        comptes[0] = new Compte(1, 100.0);
-        comptes[1] = new Compte(2, 200.0);
-        Client client4 = new Client("Doe", "Jane", 42, 123456, comptes);
-        System.out.println(client4);
+        client2.ajouterCompte(new CompteRemunere(7, 7000, 0.2));
+        System.out.println(client2);
 
-        client4.getComptes()[0].ajouter(100.0);
-        System.out.println(client4);
-
-        client4.getComptes()[0].retirer(50.0);
-        System.out.println(client4);
-
-        client4.getComptes()[1].ajouter(100.0);
-        System.out.println(client4);
-
-        client4.getComptes()[1].retirer(50.0);
-        System.out.println(client4);
-
-        client4.getComptes()[1].retirer(500.0);
-        System.out.println(client4);
-
-        client4.getComptes()[1].ajouter(500.0);
-        System.out.println(client4);
-
-
+        client2.ajouterCompte(new CompteASeuil(8, 8000, 200));
+        System.out.println(client2);
     }
 }

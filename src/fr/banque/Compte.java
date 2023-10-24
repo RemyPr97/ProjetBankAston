@@ -1,7 +1,7 @@
 package fr.banque;
 
 public class Compte {
-    private int num;
+    private final int num;
     private double solde;
 
     public Compte(int num, double solde) {
@@ -12,11 +12,7 @@ public class Compte {
 
     @Override
     public String toString() {
-        return "Compte [num=" + num + ", solde=" + solde + "]";
-    }
-
-    public void ajouter(double unMontant) {
-        this.solde += unMontant;
+        return "Compte num=" + num + ", solde=" + solde;
     }
 
     public void retirer(double unMontant) {
@@ -27,15 +23,8 @@ public class Compte {
         return num;
     }
 
-    public void setNum(int num) {
-        this.num = num;
-    }
-
     public double getSolde() {
         return solde;
     }
 
-    public void setSolde(double solde) {
-        this.solde = solde;
-    }
 }
