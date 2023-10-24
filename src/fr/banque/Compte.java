@@ -9,18 +9,18 @@ public class Compte {
         this.solde = solde;
     }
 
+    public void verser(double unMontant) {
+        this.solde += unMontant;
+    }
+
 
     @Override
     public String toString() {
-        return "Compte num=" + num + ", solde=" + solde;
+        return getClass().getName() + " num=" + num + ", solde=" + solde;
     }
 
     public void retirer(double unMontant) {
         this.solde -= unMontant;
-    }
-
-    public int getNum() {
-        return num;
     }
 
     public double getSolde() {
