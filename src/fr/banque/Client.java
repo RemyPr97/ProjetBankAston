@@ -8,8 +8,9 @@ public class Client {
     private int num;
     private Compte[] comptes = new Compte[5];
 
-    public Client() {
+    public Client(String doe, String john, int i, int i1) {
     }
+
 
     @Override
     public String toString() {
@@ -29,22 +30,25 @@ public class Client {
         return sb.toString();
     }
 
+    // Dans fr.banque.Client : public void ajouterCompte(Compte unCompte) : afin qu'elle lève une exception de type fr.banque.BanqueException quand il n'y a plus de place dans le tableau
+    public void ajouterCompte(Compte unCompte) throws BanqueException {
 
-    public void ajouterCompte(Compte unCompte) {
 
         for (int i = 0; i < comptes.length; i++) {
             if (comptes[comptes.length-1] != null) {
-                System.err.println("Le nombre maximun de compte est atteint");
-                break;
+                throw  new BanqueException("Le nombre maximun de compte est atteint");
+                //System.err.println("Le nombre maximun de compte est atteint");
+               // break;
             } else {
 
                 if (comptes[i] == null) {
                     comptes[i] = unCompte;
-                    System.out.println(unCompte + "  est bien ajouter");
+                    System.out.println(unCompte + " est bien ajouté");
                     break;
                 }
             }
         }
+
     }
 
     public String getNom() {
